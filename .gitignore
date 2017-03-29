@@ -1,0 +1,8 @@
+
+# VIM
+*~
+*.swp
+*.log
+*.vscode
+.idea
+node_modules
