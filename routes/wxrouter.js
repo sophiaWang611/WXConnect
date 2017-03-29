@@ -6,6 +6,7 @@ var aotuConfig = config.wx_config.aotu;
 var keywords = require('../config/keywords');
 
 router.get('/', function(req, res, next) {
+  console.log("checkSignature")
   if (weixin.checkSignature(req)) {
     return res.status(200).send(req.query.echostr);
   }
@@ -21,8 +22,8 @@ router.post('/', function(req, res) {
 weixin.token = aotuConfig.token;
 
 weixin.textMsg(function(msg) {
+  console.log(msg.content)
   var msgContent = trim(msg.content);
-  var flag = false;
   var resMsg = {
     fromUserName: msg.toUserName,
     toUserName: msg.fromUserName,
@@ -33,22 +34,22 @@ weixin.textMsg(function(msg) {
 
   if (!!keywords.exactKey[msgContent]) {
     resMsg.content = keywords.exactKey[msgContent].content;
-    flag = true;
+  } else {
+    resMsg.content = "听不懂你在说什么呀呀呀~~~";
   }
 
   function trim(str) {
     return ("" + str).replace(/^\s+/gi, '').replace(/\s+$/gi, '').toUpperCase();
   }
 
-  if (flag) {
-    weixin.sendMsg(resMsg);
-  }
+  weixin.sendMsg(resMsg);
 
 });
 
 
 
 weixin.eventMsg(function(msg) {
+  console.log(msg)
   var flag = false;
   var resMsg = {
     fromUserName: msg.toUserName,
