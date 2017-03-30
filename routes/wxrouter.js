@@ -64,7 +64,9 @@ weixin.eventMsg(function(msg) {
   if (eventName == 'subscribe') {
     if (autoConfig.subscribeMediaId && autoConfig.subscribeMediaId.length == 0) {
       resMsg.mediaId = autoConfig.subscribeMediaId;
-      return weixin.sendPicMsg(resMsg);
+      delete resMsg.content;
+      weixin.sendPicMsg(resMsg);
+      return;
     } else {
       resMsg.content = autoConfig.subscribe;
     }
