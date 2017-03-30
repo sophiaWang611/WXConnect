@@ -62,7 +62,7 @@ weixin.eventMsg(function(msg) {
   };
   var eventName = msg.event;
   if (eventName == 'subscribe') {
-    if (autoConfig.subscribeMediaId && autoConfig.subscribeMediaId.length == 0) {
+    if (autoConfig.subscribeMediaId && autoConfig.subscribeMediaId.length != 0) {
       resMsg.mediaId = autoConfig.subscribeMediaId;
       resMsg.msgType = "image";
       delete resMsg.content;
