@@ -75,6 +75,7 @@ weixin.eventMsg(function(msg) {
     //resMsg.content = '上传地理位置纬度：'+msg.Latitude+',经度：'+ msg.Longitude;
   }
 
+  console.log(resMsg)
   weixin.sendMsg(resMsg);
 });
 
