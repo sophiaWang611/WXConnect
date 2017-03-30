@@ -140,7 +140,7 @@ router.post('/qrcode_create',function(req,res,next){
   });
 });
 
-router.get("media_list", function(req,res,next) {
+router.get("/media_list", function(req,res,next) {
   var url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=';
   util.getToken(aotuConfig, function(result){
     if(result.err){
