@@ -148,13 +148,13 @@ router.get("/media_list", function(req,res,next) {
     }
 
     var query = req.query;
-    if (!type || type.length == 0) {
+    if (!query.type || query.type.length == 0) {
       query.type = "image"
     }
-    if (!offset || offset.length == 0) {
+    if (!query.offset || query.offset.length == 0) {
       query.offset = 1
     }
-    if (!count || count.length == 0) {
+    if (!query.count || query.count.length == 0) {
       query.count = 100
     }
     var access_token = result.data.access_token;
