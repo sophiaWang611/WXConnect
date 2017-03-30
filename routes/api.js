@@ -140,4 +140,35 @@ router.post('/qrcode_create',function(req,res,next){
   });
 });
 
+router.get("media_list", function(req,res,next) {
+  var url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=';
+  util.getToken(aotuConfig, function(result){
+    if(result.err){
+      return res.status(500).send(result.msg);
+    }
+
+    var query = req.query;
+    if (!type || type.length == 0) {
+      query.type = "image"
+    }
+    if (!offset || offset.length == 0) {
+      query.offset = 1
+    }
+    if (!count || count.length == 0) {
+      query.count = 100
+    }
+    var access_token = result.data.access_token;
+    request.post({
+      url: url + access_token,
+      form: JSON.stringify(query)
+    },function(error,httpResponse,body){
+      if(!error){
+        return res.status(200).send(JSON.parse(body));
+      }
+
+      return res.status(500).send('获取素材失败');
+    })
+  });
+});
+
 module.exports = router;
