@@ -13,6 +13,7 @@ module.exports = {
         }]
       },
       subscribe: "么么哒，终于等到你啦！觅食君已经备好各种美味！",
+      subscribeMediaId: "100000033",
       unsubscribe: ""
     }
   }

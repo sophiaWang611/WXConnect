@@ -53,7 +53,6 @@ weixin.textMsg(function(msg) {
 
 weixin.eventMsg(function(msg) {
   console.log(msg)
-  var flag = false;
   var resMsg = {
     fromUserName: msg.toUserName,
     toUserName: msg.fromUserName,
@@ -63,17 +62,19 @@ weixin.eventMsg(function(msg) {
   };
   var eventName = msg.event;
   if (eventName == 'subscribe') {
-    resMsg.content = autoConfig.subscribe;
-    flag = true;
+    if (autoConfig.subscribeMediaId && autoConfig.subscribeMediaId.length == 0) {
+      resMsg.mediaId = autoConfig.subscribeMediaId;
+      return weixin.sendPicMsg(resMsg);
+    } else {
+      resMsg.content = autoConfig.subscribe;
+    }
   } else if (eventName == 'unsubscribe') {//取消关注
   } else if (msg.event == 'CLICK') {//点击菜单栏
   } else if (eventName == 'LOCATION'){
-    resMsg.content = '上传地理位置纬度：'+msg.Latitude+',经度：'+ msg.Longitude;
+    //resMsg.content = '上传地理位置纬度：'+msg.Latitude+',经度：'+ msg.Longitude;
   }
 
-  if (flag) {
-    weixin.sendMsg(resMsg);
-  }
+  weixin.sendMsg(resMsg);
 });
 
 weixin.imageMsg(function(msg) {
