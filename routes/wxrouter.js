@@ -38,7 +38,8 @@ weixin.textMsg(function(msg) {
       fromUserName: msg.toUserName,
       toUserName: msg.fromUserName,
       msgType: "transfer_customer_service",
-      content: msg.content
+      content: msg.content,
+      funcFlag: 0
     });
   }
 

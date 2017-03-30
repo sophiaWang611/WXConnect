@@ -229,6 +229,9 @@ WeiXin.prototype.sendMsg = function(msg) {
     case 'image':
       this.sendPicMsg(msg);
       break;
+    case 'transfer_customer_service':
+      this.sendTextMsg(msg);
+      break;
       /*case 'location':
         this.sendLocationMsg(msg);
         break;*/
