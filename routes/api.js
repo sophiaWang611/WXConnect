@@ -213,5 +213,25 @@ var getUserInfoByOpenid = function(access_token,openid){
   });
 }
 
+router.post('/qrcode_create',function(req,res,next){
+  var url = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=';
+  util.getToken(aotuConfig, function(result){
+    if(result.err){
+      return res.status(500).send(result.msg);
+    }
+
+    var access_token = result.data.access_token;
+    request.post({
+      url: url + access_token,
+      form: JSON.stringify({"expire_seconds": 604800, "action_name": "QR_SCENE", "action_info": {"scene": {"scene_id": 517}}})
+    },function(error,httpResponse,body){
+      if(!error){
+        return res.status(200).send(JSON.parse(body));
+      }
+
+      return res.status(500).send('生成二维码失败');
+    })
+  });
+});
 
 module.exports = router;
