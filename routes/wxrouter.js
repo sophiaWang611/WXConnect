@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     return res.status(200).send(req.query.echostr);
   }
   return res.render('index', {
-    createTime: new Date()
+    currentTime: new Date()
   });
 });
 
