@@ -9,28 +9,11 @@ module.exports = {
         "button": [{
           "name": "点餐",
           "type": "view",
-          "url": "http://www.cnblogs.com/tom-zhu"
-        }, {
-          "name": "溯源",
-          "sub_button": [{
-            "type": "view",
-            "name": "日签·历",
-            "url": "http://www.cnblogs.com/tom-zhu"
-          },{
-            "type": "view",
-            "name": "日签·历",
-            "url": "http://www.cnblogs.com/tom-zhu"
-          },{
-            "type": "view",
-            "name": "日签·历",
-            "url": "http://www.cnblogs.com/tom-zhu"
-          }]
-        },{
-          "name": "订单",
-          "type": "view",
-          "url": "http://www.cnblogs.com/tom-zhu"
+          "url": "https://yry-h5.mishi.cn/goods/team"
         }]
-      }
+      },
+      subscribe: "么么哒，终于等到你啦！觅食君已经备好各种美味！",
+      unsubscribe: ""
     }
   }
 };

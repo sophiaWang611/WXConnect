@@ -199,6 +199,7 @@ WeiXin.prototype.sendLocationMsg = function(msg) {
 }
 
 WeiXin.prototype.parse = function() {
+  console.log("parse", JSON.stringify((this.data)));
   this.msgType = this.data.MsgType[0] ? this.data.MsgType[0] : 'text';
   switch (this.msgType) {
     case 'text':
